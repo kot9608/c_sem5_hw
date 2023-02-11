@@ -27,21 +27,19 @@ int[] GetRandomArray(int size, int minValue, int maxValue)//метод по со
 int[] GetArrayMulty (int[] arr)
 {
   int[] ArrayMulty  = new int[((arr.Length/2)+1)];//создает массив в половину длинны исходного масссива
-  for (int i = 0; i < ArrayMulty.Length; i++)
+  for (int i = 0; i < ArrayMulty.Length; i++)//цикл для заполнения массива умножением
   {
-    //int j=0;
-    //ArrayMulty[i]=1;
-    ArrayMulty[i]=array[i]*array[arr.Length-1-i];
-    if (array[i]==array[arr.Length-1-i])
+
+    ArrayMulty[i]=array[i]*array[arr.Length-1-i];//элемент массива умножения = 0 элемент исходного массива * последний(Length-1). В обоих случаях добавлен счётчик, спереди с положительным знаком, сзади с отрицательным
+    if (array[i]==array[arr.Length-1-i]) //если попали на средний элемент массива - то
     {
-      ArrayMulty[i]=array[i];
+      ArrayMulty[i]=array[i]; //средний элемент массива оставляем в исходном виде, выводим последним элементом, как указано в постановке
     }
-    //j=j+1;
   }
-  return ArrayMulty;
+  return ArrayMulty;//выводим перемноженный массив как результат работы метода
 }
-int[] res = (GetArrayMulty(array));
+int[] res = (GetArrayMulty(array));//для удобства создаем переменную res и указываем туда вызов метода умножения с переданным исходным массивом
 
 //Console.WriteLine(res);
 
-Console.WriteLine(String.Join(" ", res));
+Console.WriteLine(String.Join(" ", res)); //выводим на экран итоговый результат в виде массива.
