@@ -2,30 +2,28 @@
 // положительные элементы замените на соответствующие отрицательные, и наоборот.
 // [-4, -8, 8, 2] -> [4, 8, -8, -2] 
 
-int[] array = GetRandomArray(6, -9, 9); //вызвали создание массива, создали массив
+int[] array = GetRandomArray(6, -9, 9); //вызвали создание массива, передав (длинна массива, минимальное значение элемента, максимальное значение элемента)
 
-Console.WriteLine(String.Join(" ", array)); //вывод на экран первый массив
+Console.WriteLine(String.Join(" ", array)); //вывели на экран первый массив, до преобразования
 
-int[] GetRandomArray(int size, int minValue, int maxValue)
+int[] GetRandomArray(int size, int minValue, int maxValue)//метод по созданию рандомного массива. На вход получает (длинна массива, минимальное значение элемента, максимальное значение элемента)
 {
-    int[] result = new int[size];
-    for (int i = 0; i < size; i++)
+    int[] result = new int[size];//создает массив длинной указанной на входе
+    for (int i = 0; i < size; i++)//цикл для заполнения элементов массива случаными значениями
     {
-        result[i] = new Random().Next(minValue, maxValue + 1);
+        result[i] = new Random().Next(minValue, maxValue + 1); //каждое значение массива заполняется рандомным числом от мин до макс, т.к. макс не входит по умолчанию указано макс+1
     }
 
-    return result;
+    return result;//возвращаем массив как результат работы метода
 }
 
-int[] ObratMassiv(int[] arwertyuiky)
+int[] ObratMassiv(int[] arwertyuiky) //метод по преобразованию массива, умножая каждое число на (-1). На вход получает (массив)
 {
-
-
-  for (int i=0; i<arwertyuiky.Length; i++){
-    arwertyuiky[i]=(arwertyuiky[i]*(-1));
+  for (int i=0; i<arwertyuiky.Length; i++){//цикл для умножения каждого числа массива на -1
+    arwertyuiky[i]=(arwertyuiky[i]*(-1));//умножаем каждое число массива на -1
   }
-  return arwertyuiky;
+  return arwertyuiky;//выводим массив как результат работы метода
 }
-int[] res = ObratMassiv(array);
+int[] res = ObratMassiv(array);//создаем переменную с массивом, в которой вызываем метод ObratMassiv, передавая в него ранее созданный массив array
 
-Console.WriteLine(String.Join(" ", res));
+Console.WriteLine(String.Join(" ", res));//выводим на экран переменную res, которую объявили ранее, преобразуя её в строку и указывая пробел между элементами массива.
