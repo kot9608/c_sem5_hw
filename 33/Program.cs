@@ -4,63 +4,40 @@
 // 4; массив [6, 7, 19, 345, 3] -> нет
 // 3; массив [6, 7, 19, 345, 3] -> да
 
+Console.Clear();//очистили консоль
 
-// Написание кода с помощью массива
-Console.Clear();
-int max(int arg1, int arg2, int arg3)
+Console.Write("Введите длинну массива: ");//приглашение для польз вввести длинну массива
+int size_array = int.Parse(Console.ReadLine());//Записали длинну массива в переменную size_array
+int[] resArrayUser=GetArrayUser(size_array); //вызвали метод для создания массива из чисел, которые вводит польз
+Console.Write("Введите Число для поиска в массиве: "); //приглашение для польз вввести число для поиска
+int n = int.Parse(Console.ReadLine()); //записали число для поиска в переменную n
+if (FindElement(resArrayUser, n)) //вызов метода для поиска числа в массиве, передали в него (массив resArrayUser, число для поиска n) - если он вернул
 {
-  int result=arg1;
-  if (arg2>result)result=arg2;
-  if(arg3>result)result=arg3;
-  return result;
-}//          0  1 2  3 4  5  6 7 8 
-int[]array={11,12,3,41,5,61,7,18,19};
-// array[0]=12;
-// Console.WriteLine(array[0]);
-
-int Max = max(
-  max(array[0],array[1],array[2]),
-  max(array[3],array[4],array[5]),
-  max(array[6],array[7],array[8]));
-Console.WriteLine(Max);
-
-
-//////
-
-
-int[] GetRandomArray(int size, int minValue, int maxValue)
+  Console.WriteLine("Да"); //- если он вернул да - истина - выведи на экран да
+}
+else
 {
-    int[] result = new int[size];
-    for (int i = 0; i < size; i++)
+  Console.WriteLine("Нет");//иначе - нет
+}
+
+int[] GetArrayUser (int size)//метод по созданию массива из чисел, которые польз вводит с клавиатуры. На вход получает (длинна массива)
+{
+    int[] result = new int[size];//создает массив длинной указанной пользователем
+    for (int i = 0; i < size; i++)//цикл для заполнения элементов массива значениями введёнными с клавиатуры
     {
-        result[i] = new Random().Next(minValue, maxValue + 1);
+      Console.Write("Введите элемент массива: ");//предложение польз ввести элемент массива
+      int el = int.Parse(Console.ReadLine());//присваиваем переменнной значение, которое ввёл польз
+      result[i] = el; //присваиваем элементу массива значение переменной, которую ввёл польз
     }
-
-int[] Array = GetRandomArray(5, -9, 9);
-
-Console.WriteLine($"Введи чисор для поиска: ");
-int X = int.Parse(Console.ReadLine());
-
-int Poisk (int [] vhodMassiv, int x)
-{
- for (int i=0; i<vhodMassiv.Length; i++){
-if (x==vhodMassiv[i])
-return
-
+    return result;//возвращаем массив как результат работы метода
 }
 
-
-
-
-
-int[] ObratMassiv(int[] arwertyuiky)
+bool FindElement(int[] array, int el)//метод по поиску числа в массиве. На вход принимает массив и элемент, который нужно найти. Возвращает тип булинь - да/нет
 {
-
-
-  for (int i=0; i<arwertyuiky.Length; i++){
-    arwertyuiky[i]=(arwertyuiky[i]*(-1));
+  foreach (var item in array)//цикл, который пробегает по массиву, не может менять значения элементов в массиве
+  {
+    if(el==item) //если элемент, который ищем совпал со значением - 
+      return true; //- если да - верни да
   }
-  return arwertyuiky;
+  return false;//иначе - нет
 }
-
-
